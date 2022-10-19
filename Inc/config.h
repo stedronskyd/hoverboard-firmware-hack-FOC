@@ -73,19 +73,19 @@
  * Then you can verify voltage on debug output value 6 (to get calibrated voltage multiplied by 100).
 */
 #define BAT_FILT_COEF           655       // battery voltage filter coefficient in fixed-point. coef_fixedPoint = coef_floatingPoint * 2^16. In this case 655 = 0.01 * 2^16
-#define BAT_CALIB_REAL_VOLTAGE  3970      // input voltage measured by multimeter (multiplied by 100). In this case 43.00 V * 100 = 4300
+#define BAT_CALIB_REAL_VOLTAGE  3600  //3970    // input voltage measured by multimeter (multiplied by 100). In this case 43.00 V * 100 = 4300
 #define BAT_CALIB_ADC           1492      // adc-value measured by mainboard (value nr 5 on UART debug output)
-#define BAT_CELLS               10        // battery number of cells. Normal Hoverboard battery: 10s
+#define BAT_CELLS               3//10        // battery number of cells. Normal Hoverboard battery: 10s
 #define BAT_LVL2_ENABLE         0         // to beep or not to beep, 1 or 0
 #define BAT_LVL1_ENABLE         1         // to beep or not to beep, 1 or 0
-#define BAT_DEAD_ENABLE         1         // to poweroff or not to poweroff, 1 or 0
+#define BAT_DEAD_ENABLE         0//1         // to poweroff or not to poweroff, 1 or 0
 #define BAT_BLINK_INTERVAL      80        // battery led blink interval (80 loops * 5ms ~= 400ms)
-#define BAT_LVL5                (390 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Green blink:  no beep
-#define BAT_LVL4                (380 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Yellow:       no beep
-#define BAT_LVL3                (370 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Yellow blink: no beep 
-#define BAT_LVL2                (360 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Red:          gently beep at this voltage level. [V*100/cell]. In this case 3.60 V/cell
-#define BAT_LVL1                (350 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Red blink:    fast beep. Your battery is almost empty. Charge now! [V*100/cell]. In this case 3.50 V/cell
-#define BAT_DEAD                (337 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // All leds off: undervoltage poweroff. (while not driving) [V*100/cell]. In this case 3.37 V/cell
+#define BAT_LVL5                (380 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Green blink:  no beep
+#define BAT_LVL4                (370 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Yellow:       no beep
+#define BAT_LVL3                (360 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Yellow blink: no beep 
+#define BAT_LVL2                (350 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Red:          gently beep at this voltage level. [V*100/cell]. In this case 3.60 V/cell
+#define BAT_LVL1                (340 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // Red blink:    fast beep. Your battery is almost empty. Charge now! [V*100/cell]. In this case 3.50 V/cell
+#define BAT_DEAD                (330 * BAT_CELLS * BAT_CALIB_ADC) / BAT_CALIB_REAL_VOLTAGE    // All leds off: undervoltage poweroff. (while not driving) [V*100/cell]. In this case 3.37 V/cell
 // ######################## END OF BATTERY ###############################
 
 
@@ -257,7 +257,7 @@
 
 
 // ############################### DEBUG LCD ###############################
-// #define DEBUG_I2C_LCD                // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
+ #define DEBUG_I2C_LCD                // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 // ########################### END OF DEBUG LCD ############################
 
 
@@ -528,22 +528,22 @@
   #define MULTI_MODE_DRIVE                  // This option enables the selection of 3 driving modes at start-up using combinations of Brake and Throttle pedals (see below)
   #ifdef MULTI_MODE_DRIVE
       // BEGINNER MODE:     Power ON + Brake [released] + Throttle [released or pressed]
-      #define MULTI_MODE_DRIVE_M1_MAX   1000     //175
-      #define MULTI_MODE_DRIVE_M1_RATE  450     //250
-      #define MULTI_MODE_M1_I_MOT_MAX   I_MOT_MAX     //4 
-      #define MULTI_MODE_M1_N_MOT_MAX   N_MOT_MAX      //30
+      #define MULTI_MODE_DRIVE_M1_MAX   500     //175
+      #define MULTI_MODE_DRIVE_M1_RATE  300     //250
+      #define MULTI_MODE_M1_I_MOT_MAX   8     //4 
+      #define MULTI_MODE_M1_N_MOT_MAX   80      //30
 
       // INTERMEDIATE MODE: Power ON + Brake [pressed] + Throttle [released]
-      #define MULTI_MODE_DRIVE_M2_MAX   1000     //500
-      #define MULTI_MODE_DRIVE_M2_RATE  450     //300
-      #define MULTI_MODE_M2_I_MOT_MAX   I_MOT_MAX     //8 
-      #define MULTI_MODE_M2_N_MOT_MAX   N_MOT_MAX      //80
+      #define MULTI_MODE_DRIVE_M2_MAX   500     //500
+      #define MULTI_MODE_DRIVE_M2_RATE  300     //300
+      #define MULTI_MODE_M2_I_MOT_MAX   8     //8 
+      #define MULTI_MODE_M2_N_MOT_MAX   80      //80
 
       // ADVANCED MODE:    Power ON + Brake [pressed] + Throttle [pressed]
-      #define MULTI_MODE_DRIVE_M3_MAX   1000
-      #define MULTI_MODE_DRIVE_M3_RATE  450
-      #define MULTI_MODE_M3_I_MOT_MAX   I_MOT_MAX
-      #define MULTI_MODE_M3_N_MOT_MAX   N_MOT_MAX
+      #define MULTI_MODE_DRIVE_M3_MAX   500    //1000
+      #define MULTI_MODE_DRIVE_M3_RATE  300   //450
+      #define MULTI_MODE_M3_I_MOT_MAX   8   //I_MOT_MAX
+      #define MULTI_MODE_M3_N_MOT_MAX   80   //N_MOT_MAX
   #endif
 
 #endif
