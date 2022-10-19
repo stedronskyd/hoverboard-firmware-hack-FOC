@@ -16,7 +16,7 @@
   //#define VARIANT_PPM         // Variant for RC-Remote with PPM-Sum Signal
   //#define VARIANT_PWM         // Variant for RC-Remote with PWM Signal
   //#define VARIANT_IBUS        // Variant for RC-Remotes with FLYSKY IBUS
-  //#define VARIANT_HOVERCAR    // Variant for HOVERCAR build
+  #define VARIANT_HOVERCAR    // Variant for HOVERCAR build
   //#define VARIANT_HOVERBOARD  // Variant for HOVERBOARD build
   //#define VARIANT_TRANSPOTTER // Variant for TRANSPOTTER build https://github.com/NiklasFauth/hoverboard-firmware-hack/wiki/Build-Instruction:-TranspOtter https://hackaday.io/project/161891-transpotter-ng
   //#define VARIANT_SKATEBOARD  // Variant for SKATEBOARD build
@@ -250,7 +250,7 @@
 */
 
 // #define DEBUG_SERIAL_USART2          // left sensor board cable, disable if ADC or PPM is used!
-// #define DEBUG_SERIAL_USART3          // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
+ #define DEBUG_SERIAL_USART3          // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
 // #define DEBUG_SERIAL_PROTOCOL        // uncomment this to send user commands to the board, change parameters and print specific signals (see comms.c for the user commands)
 // ########################### END OF DEBUG SERIAL ############################
 
