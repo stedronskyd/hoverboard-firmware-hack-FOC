@@ -42,7 +42,7 @@ typedef enum{
 	LCD_OK,		/*!< Everything went OK */
 	LCD_ERROR	/*!< An error occured */
 } LCD_RESULT;
-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
 /** Type of hardware to use
  */
 typedef enum{
