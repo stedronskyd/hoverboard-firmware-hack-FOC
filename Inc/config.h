@@ -152,8 +152,8 @@
 #define DIAG_ENA        1               // [-] Motor Diagnostics enable flag: 0 = Disabled, 1 = Enabled (default)
 
 // Limitation settings
-#define I_MOT_MAX       15              // [A] Maximum single motor current limit
-#define I_DC_MAX        17              // [A] Maximum stage2 DC Link current limit for Commutation and Sinusoidal types (This is the final current protection. Above this value, current chopping is applied. To avoid this make sure that I_DC_MAX = I_MOT_MAX + 2A)
+#define I_MOT_MAX       18  //15              // [A] Maximum single motor current limit
+#define I_DC_MAX        20  //17              // [A] Maximum stage2 DC Link current limit for Commutation and Sinusoidal types (This is the final current protection. Above this value, current chopping is applied. To avoid this make sure that I_DC_MAX = I_MOT_MAX + 2A)
 #define N_MOT_MAX       1000            // [rpm] Maximum motor speed limit
 
 // Field Weakening / Phase Advance
@@ -174,7 +174,7 @@
 
 // ############################## DEFAULT SETTINGS ############################
 // Default settings will be applied at the end of this config file if not set before
-#define INACTIVITY_TIMEOUT        8       // Minutes of not driving until poweroff. it is not very precise.
+#define INACTIVITY_TIMEOUT        10       // Minutes of not driving until poweroff. it is not very precise.
 #define BEEPS_BACKWARD            1       // 0 or 1
 #define ADC_MARGIN                100     // ADC input margin applied on the raw ADC min and max to make sure the MIN and MAX values are reached even in the presence of noise
 #define ADC_PROTECT_TIMEOUT       100     // ADC Protection: number of wrong / missing input commands before safety state is taken
@@ -530,20 +530,20 @@
       // BEGINNER MODE:     Power ON + Brake [released] + Throttle [released or pressed]
       #define MULTI_MODE_DRIVE_M1_MAX   500     //175
       #define MULTI_MODE_DRIVE_M1_RATE  300     //250
-      #define MULTI_MODE_M1_I_MOT_MAX   I_MOT_MAX     //4 
-      #define MULTI_MODE_M1_N_MOT_MAX   N_MOT_MAX      //30
+      #define MULTI_MODE_M1_I_MOT_MAX   I_MOT_MAX     //4 - proud do motoru
+      #define MULTI_MODE_M1_N_MOT_MAX   N_MOT_MAX      //30 - otacky motoru
 
       // INTERMEDIATE MODE: Power ON + Brake [pressed] + Throttle [released]
       #define MULTI_MODE_DRIVE_M2_MAX   500     //500
       #define MULTI_MODE_DRIVE_M2_RATE  300     //300
-      #define MULTI_MODE_M2_I_MOT_MAX   I_MOT_MAX     //8 
-      #define MULTI_MODE_M2_N_MOT_MAX   N_MOT_MAX      //80
+      #define MULTI_MODE_M2_I_MOT_MAX   I_MOT_MAX     //8 - proud do motoru 
+      #define MULTI_MODE_M2_N_MOT_MAX   N_MOT_MAX      //80 - otacky motoru
 
       // ADVANCED MODE:    Power ON + Brake [pressed] + Throttle [pressed]
       #define MULTI_MODE_DRIVE_M3_MAX   500    //1000
       #define MULTI_MODE_DRIVE_M3_RATE  300   //450
-      #define MULTI_MODE_M3_I_MOT_MAX   I_MOT_MAX   //I_MOT_MAX
-      #define MULTI_MODE_M3_N_MOT_MAX   N_MOT_MAX   //N_MOT_MAX
+      #define MULTI_MODE_M3_I_MOT_MAX   I_MOT_MAX   //I_MOT_MAX - proud do motoru
+      #define MULTI_MODE_M3_N_MOT_MAX   N_MOT_MAX   //N_MOT_MAX - otacky motoru
   #endif
 
 #endif
