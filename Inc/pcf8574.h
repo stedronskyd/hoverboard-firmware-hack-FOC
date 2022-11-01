@@ -43,7 +43,8 @@ typedef struct{
 	uint32_t			PCF_I2C_TIMEOUT;	/**< timeout value for the communication in milliseconds */
 	I2C_HandleTypeDef 	i2c;				/**< I2C_HandleTypeDef structure */
 	void				(*errorCallback)(PCF8574_RESULT);
-} PCF8574_HandleTypeDef;
+} 
+PCF8574_HandleTypeDef;
 
 /** @var PCF8574_Type0Pins[8] - characterization of pins for hardware of type 0
  */
